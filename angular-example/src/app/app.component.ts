@@ -24,4 +24,20 @@ export class AppComponent {
       completed: false,
     },
   ];
+
+  toggleCompleteNote = (id: number) => {
+    this.notes = this.notes.map((note) => {
+      if (note.id === id) {
+        return {
+          ...note,
+          completed: !note.completed,
+        };
+      }
+      return note;
+    });
+  };
+
+  deleteNote = (id: number) => {
+    this.notes = this.notes.filter((note) => note.id !== id);
+  };
 }
