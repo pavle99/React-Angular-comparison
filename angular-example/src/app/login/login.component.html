@@ -1,0 +1,6 @@
+<h1>Login</h1>
+<form [formGroup]="loginForm" (submit)="login()">
+  <input type="text" placeholder="Username" formControlName="username" />
+  <input type="password" placeholder="Password" formControlName="password" />
+  <button type="submit">Prijavi se</button>
+</form>
