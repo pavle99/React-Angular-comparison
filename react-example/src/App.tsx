@@ -35,8 +35,30 @@ function App() {
     setNotes(newNotes);
   }
 
+  function addNote(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+
+    const newNote = {
+      id: notes.length + 1,
+      title: (data.get("title") || "Prazan naslov") as string,
+      description: (data.get("description") || "Prazan opis") as string,
+      completed: false,
+    };
+
+    setNotes([...notes, newNote]);
+
+    e.currentTarget.reset();
+  }
+
   return (
     <div>
+      <form onSubmit={addNote}>
+        <input name="title" type="text" placeholder="Title" />
+        <input name="description" type="text" placeholder="Description" />
+        <button type="submit">Add note</button>
+      </form>
       <h1>Lista beleski</h1>
       <ul>
         {notes.map((note) => (

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { INote } from 'src/types/note';
 
 @Component({
@@ -7,6 +8,8 @@ import { INote } from 'src/types/note';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  constructor(private formBuilder: FormBuilder) {}
+
   title = 'angular-example';
 
   notes: INote[] = [
@@ -39,5 +42,21 @@ export class AppComponent {
 
   deleteNote = (id: number) => {
     this.notes = this.notes.filter((note) => note.id !== id);
+  };
+
+  addNoteForm = this.formBuilder.group({
+    title: '',
+    description: '',
+  });
+
+  addNote = () => {
+    const note: INote = {
+      id: this.notes.length + 1,
+      title: this.addNoteForm.value.title || 'Prazan naslov',
+      description: this.addNoteForm.value.description || 'Prazan opis',
+      completed: false,
+    };
+    this.notes = [...this.notes, note];
+    this.addNoteForm.reset();
   };
 }
