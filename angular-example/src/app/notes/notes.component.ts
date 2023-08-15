@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { INote } from 'src/types/note';
 import { LoginService } from '../login.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-notes',
@@ -10,42 +11,36 @@ import { LoginService } from '../login.service';
   styleUrls: ['./notes.component.css'],
 })
 export class NotesComponent {
+  private baseUrl: string = 'http://localhost:3000/notes';
+
+  notes: INote[] = [];
+
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private formBuilder: FormBuilder
-  ) {}
-
-  notes: INote[] = [
-    {
-      id: 1,
-      title: 'Sastanak sa timom',
-      description:
-        'Pripremiti pitanja za sastanak sa timom u vezi novog projekta.',
-      completed: false,
-    },
-    {
-      id: 2,
-      title: 'Kupovina namirnica',
-      description: 'Kupiti sveze voce, povrce i mlecne proizvode u prodavnici.',
-      completed: false,
-    },
-  ];
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) {
+    this.notes = this.route.snapshot.data['notes'];
+  }
 
   toggleCompleteNote = (id: number) => {
-    this.notes = this.notes.map((note) => {
-      if (note.id === id) {
-        return {
-          ...note,
-          completed: !note.completed,
-        };
-      }
-      return note;
-    });
+    const note = this.notes.find((n) => n.id === id);
+    if (note) {
+      const updatedNote = { ...note, completed: !note.completed };
+      this.http
+        .put<INote>(`${this.baseUrl}/${id}`, updatedNote)
+        .subscribe((newNote) => {
+          this.notes = this.notes.map((n) => (n.id === id ? newNote : n));
+        });
+    }
   };
 
   deleteNote = (id: number) => {
-    this.notes = this.notes.filter((note) => note.id !== id);
+    this.http.delete(`${this.baseUrl}/${id}`).subscribe((response) => {
+      this.notes = this.notes.filter((note) => note.id !== id);
+    });
   };
 
   addNoteForm = this.formBuilder.group({
@@ -54,14 +49,15 @@ export class NotesComponent {
   });
 
   addNote = () => {
-    const note: INote = {
-      id: this.notes.length + 1,
+    const note = {
       title: this.addNoteForm.value.title || 'Prazan naslov',
       description: this.addNoteForm.value.description || 'Prazan opis',
       completed: false,
     };
-    this.notes = [...this.notes, note];
-    this.addNoteForm.reset();
+    this.http.post<INote>(this.baseUrl, note).subscribe((newNote) => {
+      this.notes = [...this.notes, newNote];
+      this.addNoteForm.reset();
+    });
   };
 
   user$ = this.loginService.user$;

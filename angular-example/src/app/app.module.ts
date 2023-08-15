@@ -7,10 +7,16 @@ import { NoteComponent } from './note/note.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotesComponent } from './notes/notes.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NoteComponent, NotesComponent, LoginComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
