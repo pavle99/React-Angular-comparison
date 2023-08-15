@@ -6,12 +6,11 @@
 <h1>Lista beleski</h1>
 <ul>
   <li *ngFor="let note of notes">
-    <h2>{{ note.title }}</h2>
-    <p>{{ note.description }}</p>
-    <p>Status: {{ note.completed ? "Zavrseno" : "Nije zavrseno" }}</p>
-    <button (click)="toggleCompleteNote(note.id)">
-      Oznaci kao {{ note.completed ? "Nije zavrseno" : "Zavrseno" }}
-    </button>
-    <button (click)="deleteNote(note.id)">Izbrisi</button>
+    <app-note
+      [note]="note"
+      [deleteNote]="deleteNote"
+      [toggleCompleteNote]="toggleCompleteNote"
+    />
   </li>
 </ul>
+
