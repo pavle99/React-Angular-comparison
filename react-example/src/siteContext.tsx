@@ -11,7 +11,7 @@ export const UserContext = React.createContext<IUserContext>({
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = React.useState<string | null>(null);
+  const [user, setUser] = React.useState<string | null>(localStorage.getItem("user"));
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };

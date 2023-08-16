@@ -27,6 +27,7 @@ function Login() {
     };
 
     setUser(user.username);
+    localStorage.setItem("user", user.username);
 
     navigate("/notes");
   }

@@ -34,13 +34,12 @@ function Notes() {
         body: JSON.stringify(updatedNote),
       })
         .then((res) => res.json())
-        .then((newNote) => setNotes(notes.map((note) => (note.id === id ? newNote : note))));
+        .then((newNote) => setNotes((prevNotes) => prevNotes.map((note) => (note.id === id ? newNote : note))));
     }
   }
 
   function deleteNote(id: number) {
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
 
     fetch(`http://localhost:3000/notes/${id}`, {
       method: "DELETE",
@@ -71,11 +70,16 @@ function Notes() {
     e.currentTarget.reset();
   }
 
+  const logout = () => {
+    setUser("");
+    localStorage.removeItem("user");
+  };
+
   return (
     <div>
       <div>
         <h2>Dobrodosao {user}!</h2>
-        <button onClick={() => setUser("")}>Odjavi se</button>
+        <button onClick={logout}>Odjavi se</button>
       </div>
       <form onSubmit={addNote}>
         <input name="title" type="text" placeholder="Title" />
