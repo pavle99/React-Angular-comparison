@@ -1,20 +1,34 @@
-<div>
-  <h2>Dobrodosao {{ user$ | async }}!</h2>
-  <button (click)="logout()">Odjavi se</button>
-</div>
+<div class="notes-container">
+  <div class="header">
+    <h2 class="welcome-message">Dobrodosao {{ user$ | async }}!</h2>
+    <button (click)="logout()" class="logout-button">Odjavi se</button>
+  </div>
 
-<form (ngSubmit)="addNote()" [formGroup]="addNoteForm">
-  <input type="text" name="title" placeholder="Title" formControlName="title" />
-  <input type="text" name="description" placeholder="Description" formControlName="description" />
-  <button type="submit">Add note</button>
-</form>
-<h1>Lista beleski</h1>
-<ul>
-  <li *ngFor="let note of notes">
-    <app-note
-      [note]="note"
-      [deleteNote]="deleteNote"
-      [toggleCompleteNote]="toggleCompleteNote"
+  <form (ngSubmit)="addNote()" [formGroup]="addNoteForm" class="add-note-form">
+    <input
+      type="text"
+      name="title"
+      placeholder="Title"
+      formControlName="title"
+      class="note-input"
     />
-  </li>
-</ul>
+    <input
+      type="text"
+      name="description"
+      placeholder="Description"
+      formControlName="description"
+      class="note-input"
+    />
+    <button type="submit" class="add-note-button">Dodaj belesku</button>
+  </form>
+  <h1 class="notes-list-title">Lista beleski</h1>
+  <ul class="notes-list">
+    <li *ngFor="let note of notes" class="note-item">
+      <app-note
+        [note]="note"
+        [deleteNote]="deleteNote"
+        [toggleCompleteNote]="toggleCompleteNote"
+      />
+    </li>
+  </ul>
+</div>

@@ -76,18 +76,22 @@ function Notes() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Dobrodosao {user}!</h2>
-        <button onClick={logout}>Odjavi se</button>
+    <div className="notes-container">
+      <div className="header">
+        <h2 className="welcome-message">Dobrodosao {user}!</h2>
+        <button onClick={logout} className="logout-button">
+          Odjavi se
+        </button>
       </div>
-      <form onSubmit={addNote}>
-        <input name="title" type="text" placeholder="Title" />
-        <input name="description" type="text" placeholder="Description" />
-        <button type="submit">Add note</button>
+      <form onSubmit={addNote} className="add-note-form">
+        <input name="title" type="text" placeholder="Title" className="note-input" />
+        <input name="description" type="text" placeholder="Description" className="note-input" />
+        <button type="submit" className="add-note-button">
+          Dodaj belesku
+        </button>
       </form>
-      <h1>Lista beleski</h1>
-      <ul>
+      <h1 className="notes-list-title">Lista beleski</h1>
+      <ul className="notes-list">
         {notes.map((note) => (
           <Note key={note.id} note={note} toggleCompleteNote={toggleCompleteNote} deleteNote={deleteNote} />
         ))}

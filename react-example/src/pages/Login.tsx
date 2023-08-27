@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../siteContext";
 import { useEffect } from "react";
 
+import "../styles/login.css";
+
 function Login() {
   const { user, setUser } = useUser();
 
@@ -33,13 +35,17 @@ function Login() {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={login}>
-        <input type="text" placeholder="Username" name="username" />
-        <input type="password" placeholder="Password" name="password" />
-        <button type="submit">Prijavi se</button>
-      </form>
+    <div className="login-page-wrapper">
+      <div className="login-container">
+        <h1 className="login-title">Login</h1>
+        <form onSubmit={login} className="login-form">
+          <input type="text" placeholder="Korisnicko ime" name="username" className="login-input" />
+          <input type="password" placeholder="Sifra" name="password" className="login-input" />
+          <button type="submit" className="login-button">
+            Prijavi se
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

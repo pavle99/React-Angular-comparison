@@ -1,6 +1,20 @@
-<h1>Login</h1>
-<form [formGroup]="loginForm" (submit)="login()">
-  <input type="text" placeholder="Username" formControlName="username" />
-  <input type="password" placeholder="Password" formControlName="password" />
-  <button type="submit">Prijavi se</button>
-</form>
+<div class="login-page-wrapper">
+  <div class="login-container">
+    <h1 class="login-title">Prijava</h1>
+    <form [formGroup]="loginForm" (submit)="login()" class="login-form">
+      <input
+        type="text"
+        placeholder="Korisnicko ime"
+        formControlName="username"
+        class="login-input"
+      />
+      <input
+        type="password"
+        placeholder="Sifra"
+        formControlName="password"
+        class="login-input"
+      />
+      <button type="submit" class="login-button">Prijavi se</button>
+    </form>
+  </div>
+</div>

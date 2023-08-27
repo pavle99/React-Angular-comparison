@@ -1,22 +1,64 @@
 {
   "notes": [
     {
-      "title": "erg",
-      "description": "rth",
-      "completed": false,
-      "id": 1
+      "id": 1,
+      "title": "Sastanak sa timom",
+      "description": "Pripremiti pitanja za sastanak sa timom u vezi novog projekta.",
+      "completed": false
     },
     {
-      "title": "btrb",
-      "description": "rtb",
-      "completed": false,
-      "id": 3
+      "id": 2,
+      "title": "Kupovina namirnica",
+      "description": "Kupiti sveže voće, povrće i mlečne proizvode u prodavnici.",
+      "completed": false
     },
     {
-      "title": "wef",
-      "description": "egrg",
-      "completed": false,
-      "id": 4
+      "id": 3,
+      "title": "Vežbe joge",
+      "description": "Izvesti niz vežbi joge za istezanje i opuštanje tela.",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Naučiti nove recepte",
+      "description": "Istražiti nove recepte za pripremu ukusnih obroka i zabeležiti ih.",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Čitanje knjige",
+      "description": "Nastaviti sa čitanjem romana koji se ističe dubokom filozofskom tematikom.",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Pregled treninga",
+      "description": "Proučiti svoj nedeljni trening i napraviti plan za napredak.",
+      "completed": false
+    },
+    {
+      "id": 7,
+      "title": "Istraživanje putovanja",
+      "description": "Ispitati destinacije za sledeće putovanje i pronaći najbolje ponude.",
+      "completed": false
+    },
+    {
+      "id": 8,
+      "title": "Organizacija radnog prostora",
+      "description": "Srediti radni sto i organizovati dokumentaciju radi efikasnijeg rada.",
+      "completed": false
+    },
+    {
+      "id": 9,
+      "title": "Pomoć u volontiranju",
+      "description": "Kontaktirati lokalni centar za volontiranje i saznati kako mogu pomoći zajednici.",
+      "completed": false
+    },
+    {
+      "id": 10,
+      "title": "Fotografska šetnja",
+      "description": "Prošetati gradom sa fotoaparatom i uhvatiti interesantne prizore i trenutke.",
+      "completed": false
     }
   ]
 }

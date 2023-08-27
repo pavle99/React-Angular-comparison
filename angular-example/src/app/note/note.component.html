@@ -1,7 +1,11 @@
-<h2>{{ note.title }}</h2>
-<p>{{ note.description }}</p>
-<p>Status: {{ note.completed ? "Zavrseno" : "Nije zavrseno" }}</p>
-<button (click)="toggleCompleteNote(note.id)">
+<h2 class="note-title">{{ note.title }}</h2>
+<p class="note-description">{{ note.description }}</p>
+<p class="note-status">
+  Status: {{ note.completed ? "Zavrseno" : "Nije zavrseno" }}
+</p>
+<button (click)="toggleCompleteNote(note.id)" class="toggle-status-button">
   Oznaci kao {{ note.completed ? "Nije zavrseno" : "Zavrseno" }}
 </button>
-<button (click)="deleteNote(note.id)">Izbrisi</button>
+<button (click)="deleteNote(note.id)" class="delete-note-button">
+  Izbrisi
+</button>

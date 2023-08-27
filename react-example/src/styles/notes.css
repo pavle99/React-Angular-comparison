@@ -18,7 +18,9 @@
 }
 
 .logout-button,
-.add-note-button {
+.add-note-button,
+.toggle-status-button,
+.delete-note-button {
   padding: 10px;
   margin: 5px;
   border: none;
@@ -64,4 +66,24 @@
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.note-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.note-description,
+.note-status {
+  margin-bottom: 10px;
+}
+
+.toggle-status-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-note-button {
+  background-color: #ff4d4d;
+  color: white;
 }
